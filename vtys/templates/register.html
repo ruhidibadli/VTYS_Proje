@@ -1,0 +1,53 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+{% include 'header.html' %}
+<body>
+<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="{% url 'index' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">Register Page</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+<!-- register -->
+	<div class="register">
+		<div class="container">
+			<h2>Register Here</h2>
+			<div class="login-form-grids">
+				<h5>profile information</h5>
+				<form action="#" method="POST">
+					{% csrf_token %}
+					<input type="text" placeholder="UserName..." required=" " name="username" >
+					<input type="text" placeholder="Last Name..." required=" " name='first_name' >
+					<hr>
+					<input type="email" placeholder="Email Address" required="true"  name="email">
+					<input type="password" placeholder="Password" required="true" name="password" >
+					<input type="password" placeholder="Password Confirmation" required="true" name="password2" >
+					<div class="register-check-box">
+						<div class="check">
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
+						</div>
+					</div>
+					<input type="submit" value="Register">
+				</form>
+			</div>
+			<div class="register-home">
+				<a href="{% url 'index' %}">Home</a>
+			</div>
+		</div>
+	</div>
+<!-- //register -->
+{% include 'footer.html' %}
+
+
+</body>
+</html>

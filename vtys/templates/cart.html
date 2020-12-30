@@ -1,0 +1,94 @@
+{% load static %}
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+{% include 'header.html' %}
+<body>
+<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1">
+				<li><a href="{% url 'index' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">Checkout Page</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+<!-- checkout -->
+	<div class="checkout">
+		<div class="container">
+			<h2>Your shopping cart contains: <span>{{ number }} Products</span></h2>
+			<div class="checkout-right">
+				<table class="timetable_sub">
+					<thead>
+						<tr>
+							<th>SL No.</th>	
+							<th>Product</th>
+							<th>Product Name</th>	
+							<th>Price</th>
+						</tr>
+					</thead>
+					{% for product in cart %}
+						{% if product.groceries_id is not null %}
+							<tr class="rem1">
+								<td class="invert">1</td>
+								<td class="invert-image"><img src="{% static product.groceries_id.get_image_path %}" alt=" " class="img-responsive" /></td>
+								<td class="invert">{{ product.groceries_id.name }}</td>
+								<td class="invert">${{ product.groceries_id.price }}</td>
+							</tr>
+						{% endif %}
+						{% if product.beverages_id is not null %}
+						<tr class="rem1">
+							<td class="invert">1</td>
+							<td class="invert-image"><img src="{% static product.beverages_id.get_image_path %}" alt=" " class="img-responsive" /></td>
+							<td class="invert">
+							<td class="invert">{{ product.beverages_id.name }}</td>
+							<td class="invert">${{ product.beverages_id.price }}</td>
+						</tr>
+						{% endif %}
+						{% if product.personal_care_id is not null %}
+						<tr class="rem1">
+							<td class="invert">1</td>
+							<td class="invert-image"><img src="{% static product.personal_care_id.get_image_path %}" alt=" " class="img-responsive" /></td>
+							<td class="invert">{{ product.personal_care_id.name }}</td>
+							<td class="invert">${{ product.personal_care_id.price }}</td>
+						</tr>
+					{% endif %}
+					{% if product.household_id is not null %}
+					<tr class="rem1">
+						<td class="invert">1</td>
+						<td class="invert-image"><img src="{% static product.household_id.get_image_path %}" alt=" " class="img-responsive" /></td>
+						<td class="invert">{{ product.household_id.name }}</td>
+						<td class="invert">${{ product.household_id.price }}</td>
+					</tr>
+				{% endif %}
+				{% if product.packaged_foods_id is not null %}
+				<tr class="rem1">
+					<td class="invert">1</td>
+					<td class="invert-image"><img src="{% static product.packaged_foods_id.get_image_path %}" alt=" " class="img-responsive" /></td>
+					<td class="invert">{{ product.packaged_foods_id.name }}</td>
+					<td class="invert">${{ product.packaged_foods_id.price }}</td>
+				</tr>
+				{% endif %}
+				{% endfor %}
+				</table>
+			</div>
+			<div class="checkout-left">	
+				<div class="checkout-right-basket">
+					<a href="{% url 'index' %}"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+<!-- //checkout -->
+{% include 'footer.html' %}
+
+
+</body>
+</html>

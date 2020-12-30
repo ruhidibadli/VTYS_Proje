@@ -1,0 +1,46 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+{% include 'header.html' %}
+<body>
+<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">Login Page</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+<!-- login -->
+	<div class="login">
+		<div class="container">
+			<h2>Login Form</h2>
+		
+			<div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+				<form action="#" method="POST">
+					{% csrf_token %}
+					<input type="text" placeholder="UserName" required="true" name="username" >
+					<input type="password" placeholder="Password" required="true"  name="password" >
+					<div class="forgot">
+						<a href="#">Forgot Password?</a>
+					</div>
+					<input type="submit" value="Login">
+				</form>
+			</div>
+			<h4>For New People</h4>
+			<p><a href="{% url 'register' %}">Register Here</a> (Or) go back to <a href="{% url 'index' %}">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+		</div>
+	</div>
+<!-- //login -->
+{% include 'footer.html' %}	
+
+
+</body>
+</html>

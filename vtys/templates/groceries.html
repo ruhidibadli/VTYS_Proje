@@ -1,0 +1,66 @@
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+{% include 'header.html' %}
+{% load static %}
+<body>
+<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="{% url 'index' %}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">Groceries</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+<!--- groceries --->
+	<div class="products">
+		<div class="container">
+			<div class="col-md-4 products-left">
+				{% include 'categories.html' %}																																											
+			</div>
+			<div class="col-md-8 products-right">
+				<div class="agile_top_brands_grids">
+					{% for product in groceries %}
+						<div class="col-md-4 top_brand_left">
+							<div class="hover14 column">
+								<div class="agile_top_brand_left_grid">
+									<div class="agile_top_brand_left_grid_pos">
+										<img src="{% static 'images/offer.png' %}" alt=" " class="img-responsive">
+									</div>
+									<div class="agile_top_brand_left_grid1">
+										<figure>
+											<div class="snipcart-item block">
+												<div class="snipcart-thumb">
+													<a href="#"><img title=" " alt=" " src="{% static product.get_image_path %}"></a>		
+													<p>{{ product.name }}</p>
+													<h4>${{ product.price }} </h4>
+												</div>
+												<div class="snipcart-details top_brand_home_details">
+													<a href="{% url 'groceries' product.id %}" class="Button">Add To Cart</a>
+												</div>
+											</div>
+										</figure>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+					<div class="clearfix"> </div>
+				</div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+	</div>
+<!--- groceries --->
+{% include 'footer.html' %}
+
+
+</body>
+</html>
